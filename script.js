@@ -7,8 +7,13 @@
     result.className = "result"
     const stat = document.createElement('div')
     stat.className = "status"
+
     const compare = document.createElement('div')
     compare.className = "compare"
+    const compareuser = document.createElement('div')
+    compareuser.className = "compareuser"
+    const comparecomp = document.createElement('div')
+    comparecomp.className = "comparecomp"
     const gamenumber = document.createElement('div')
     gamenumber.className = "gamenumber"
     const final = document.createElement('div')
@@ -21,6 +26,8 @@
     body.prepend(play)
     body.appendChild(gamenumber)
     body.appendChild(compare)
+    compare.appendChild(compareuser)
+    compare.appendChild(comparecomp)
 
     body.appendChild(result)
     body.appendChild(stat)
@@ -46,22 +53,22 @@
                     } else if (computerSelection == "paper" && playerSelection == "scissors") {
                             player++;
                             i++;
-                            result.textContent = `\r\nyou win this round`
+                            result.textContent = `\r\nYou win this round`
                     } else if (computerSelection == "paper" && playerSelection == "rock") {
                             comp++;
                             i++;
-                            result.textContent = `\r\nyou lose this round`
+                            result.textContent = `\r\nYou lose this round`
                     } else if (computerSelection == "scissors" && playerSelection == "rock") {
                             player++;
                             i++;
-                            result.textContent = `\r\nyou win this round`
+                            result.textContent = `\r\nYou win this round`
                     } else if (computerSelection == "scissors" && playerSelection == "paper") {
                             comp++;
                             i++;
-                            result.textContent = `\r\nyou lose this round`
+                            result.textContent = `\r\nYou lose this round`
                     } else if (computerSelection == playerSelection) {
                             i++;
-                            result.textContent = `\r\ndraw this round`
+                            result.textContent = `\r\nDraw this round`
                     } else
                     result.textContent = `\r\nchoose among rock, paper, scissors`
                     }
@@ -70,11 +77,11 @@
             function finish() {
         
                     if (player>comp) {
-                            return "you won the game"
+                            return "You won the game"
                     } else if (player<comp) {
-                            return "you lost the game"
+                            return "You lost the game"
                     } else {
-                            return "draw"
+                            return "Draw"
                     }
                 }
         
@@ -96,7 +103,8 @@
                             const computerSelection = computerPlay();
                             gamenumber.textContent = "Game #" + (parseInt(i)+1)
                             playRound(chosen, computerSelection)
-                            compare.textContent = `\r\nyou = ${chosen} and computer = ${computerSelection}`
+                            compareuser.textContent = `You ${chosen}`
+                            comparecomp.textContent = `Computer ${computerSelection}`
                             stat.textContent = `\r\nyou = ${player} and computer = ${comp}`
 
                             

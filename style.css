@@ -54,7 +54,19 @@ button:hover {
 }
 
 .compare {
-    margin: 30px auto;
+    display: flex;
+    margin: auto;
+    padding: 50px;
+    text-align: center;
+    line-height: 1.8;
+
+}
+.compareuser {
+    margin: 30px;
+
+}
+.comparecomp {
+    margin: 30px;
 }
 
 .final {
