@@ -1,11 +1,30 @@
 
     const body = document.querySelector('body')
 
-    const div = document.createElement('div')
+    const play = document.createElement('div')
+    play.className = "play"
+    const result = document.createElement('div')
+    result.className = "result"
+    const stat = document.createElement('div')
+    stat.className = "status"
+    const compare = document.createElement('div')
+    compare.className = "compare"
+    const gamenumber = document.createElement('div')
+    gamenumber.className = "gamenumber"
+    const final = document.createElement('div')
+    final.className = "final"
+
+
     
     
     
-    body.appendChild(div)
+    body.prepend(play)
+    body.appendChild(gamenumber)
+    body.appendChild(compare)
+
+    body.appendChild(result)
+    body.appendChild(stat)
+    body.appendChild(final)
 
     let player = 0;
     let comp = 0;
@@ -19,32 +38,32 @@
                     if (computerSelection == "rock" && playerSelection =="scissors") {
                             comp++;
                             i++;
-                            div.textContent += `\r\nyou lose this round`
+                            result.textContent = `\r\nyou lose this round`
                     } else if (computerSelection == "rock" && playerSelection == "paper") {
                             player++;
                             i++;
-                            div.textContent += `\r\nyou win this round`
+                            result.textContent = `\r\nyou win this round`
                     } else if (computerSelection == "paper" && playerSelection == "scissors") {
                             player++;
                             i++;
-                            div.textContent += `\r\nyou win this round`
+                            result.textContent = `\r\nyou win this round`
                     } else if (computerSelection == "paper" && playerSelection == "rock") {
                             comp++;
                             i++;
-                            div.textContent += `\r\nyou lose this round`
+                            result.textContent = `\r\nyou lose this round`
                     } else if (computerSelection == "scissors" && playerSelection == "rock") {
                             player++;
                             i++;
-                            div.textContent += `\r\nyou win this round`
+                            result.textContent = `\r\nyou win this round`
                     } else if (computerSelection == "scissors" && playerSelection == "paper") {
                             comp++;
                             i++;
-                            div.textContent += `\r\nyou lose this round`
+                            result.textContent = `\r\nyou lose this round`
                     } else if (computerSelection == playerSelection) {
                             i++;
-                            div.textContent += `\r\ndraw this round`
+                            result.textContent = `\r\ndraw this round`
                     } else
-                    div.textContent += `\r\nchoose among rock, paper, scissors`
+                    result.textContent = `\r\nchoose among rock, paper, scissors`
                     }
 
 
@@ -63,7 +82,7 @@
 
             
             const buttons = document.querySelectorAll('button');
-            div.textContent = "press a button to play"
+            play.textContent = "Press a Button to Play"
             buttons.forEach((button) => {
                     button.addEventListener('click', function () {
                             chosen = this.id 
@@ -72,17 +91,17 @@
                                     return choices[Math.floor(Math.random() * 3)]
                                 }
 
-                            div.setAttribute('style', 'white-space: pre;');
+                            play.setAttribute('style', 'white-space: pre;');
 
                             const computerSelection = computerPlay();
-                            div.textContent = "the game number is " + (parseInt(i)+1)
+                            gamenumber.textContent = "Game #" + (parseInt(i)+1)
                             playRound(chosen, computerSelection)
-                            div.textContent += `\r\nyou = ${chosen} and computer = ${computerSelection}`
-                            div.textContent += `\r\nyou = ${player} and computer = ${comp}`
+                            compare.textContent = `\r\nyou = ${chosen} and computer = ${computerSelection}`
+                            stat.textContent = `\r\nyou = ${player} and computer = ${comp}`
 
                             
                             if (player>=5 || comp >= 5) {
-                                div.textContent = finish() + `\r\nyou = ${player} and computer = ${comp}`
+                                final.textContent = finish() + `\r\nyou = ${player} and computer = ${comp}`
                                 buttons.forEach((button) => {
                                         button.style.display = 'none'})
                                         
